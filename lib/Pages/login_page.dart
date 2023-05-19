@@ -143,8 +143,15 @@ class _LoginPageState extends State<LoginPage> {
                     width: double.infinity,
                     child: TextButton(
                       onPressed: () {
-                        print(email);
-                        print(senha);
+                       if(emailController.text.trim() == "email@email.com" && senhaController.text.trim() == "123"){
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Login Efetuado com sucesso"),)
+                        );
+                       }else {
+                         ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Erro ao efetuar o login"),)
+                        );
+                       }
                       },
                       style: ButtonStyle(
                         shape: MaterialStateProperty.all(
