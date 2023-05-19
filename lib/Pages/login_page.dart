@@ -10,6 +10,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String email = "";
   String senha = "";
+  bool isObscureText = true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -102,26 +103,34 @@ class _LoginPageState extends State<LoginPage> {
                     onChanged: (value){
                       senha = value;
                     },
+                    obscureText: isObscureText,
                     style: const TextStyle(color: Colors.white),
-                    decoration: const InputDecoration(
-                      contentPadding: EdgeInsets.only(top: 0),
-                      enabledBorder: UnderlineInputBorder(
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.only(top: 0),
+                      enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                         color: Color.fromARGB(255, 123, 2, 134),
                       )),
-                      focusedBorder: UnderlineInputBorder(
+                      focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                         color: Color.fromARGB(255, 123, 2, 134),
                       )),
                       hintText: "Senha",
-                      hintStyle: TextStyle(color: Colors.white),
-                      prefixIcon: Icon(
+                      hintStyle: const TextStyle(color: Colors.white),
+                      prefixIcon: const Icon(
                         Icons.lock,
                         color: Color.fromARGB(255, 123, 2, 134),
                       ),
-                      suffixIcon: Icon(
-                        Icons.visibility,
-                        color: Color.fromARGB(255, 123, 2, 134),
+                      suffixIcon: InkWell(
+                          onTap: () {
+                            setState(() {
+                              isObscureText = !isObscureText;
+                            });
+                          },
+                        child: Icon(
+                          isObscureText ? Icons.visibility_off: Icons.visibility,
+                          color: const Color.fromARGB(255, 123, 2, 134),
+                        ),
                       ),
                     ),
                   ),
