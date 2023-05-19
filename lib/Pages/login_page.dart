@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/Pages/cadastro_page.dart';
 import 'package:trilhaapp/Pages/main_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -193,11 +194,19 @@ class _LoginPageState extends State<LoginPage> {
                   margin: const EdgeInsets.symmetric(horizontal: 30),
                   height: 30,
                   alignment: Alignment.center,
-                  child: const Text(
-                    "Criar conta",
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 19, 226, 26),
-                        fontWeight: FontWeight.w400),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CadastroPage()));
+                    },
+                    child: const Text(
+                      "Criar conta",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 19, 226, 26),
+                          fontWeight: FontWeight.w400),
+                    ),
                   ),
                 ),
                 const SizedBox(
