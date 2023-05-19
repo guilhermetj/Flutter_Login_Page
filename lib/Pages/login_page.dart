@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/Pages/main_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -118,13 +119,15 @@ class _LoginPageState extends State<LoginPage> {
                         color: Color.fromARGB(255, 123, 2, 134),
                       ),
                       suffixIcon: InkWell(
-                          onTap: () {
-                            setState(() {
-                              isObscureText = !isObscureText;
-                            });
-                          },
+                        onTap: () {
+                          setState(() {
+                            isObscureText = !isObscureText;
+                          });
+                        },
                         child: Icon(
-                          isObscureText ? Icons.visibility_off: Icons.visibility,
+                          isObscureText
+                              ? Icons.visibility_off
+                              : Icons.visibility,
                           color: const Color.fromARGB(255, 123, 2, 134),
                         ),
                       ),
@@ -143,15 +146,18 @@ class _LoginPageState extends State<LoginPage> {
                     width: double.infinity,
                     child: TextButton(
                       onPressed: () {
-                       if(emailController.text.trim() == "email@email.com" && senhaController.text.trim() == "123"){
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("Login Efetuado com sucesso"),)
-                        );
-                       }else {
-                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("Erro ao efetuar o login"),)
-                        );
-                       }
+                        if (emailController.text.trim() == "email@email.com" &&
+                            senhaController.text.trim() == "123") {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const MainPage()));
+                        } else {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text("Erro ao efetuar o login"),
+                          ));
+                        }
                       },
                       style: ButtonStyle(
                         shape: MaterialStateProperty.all(
