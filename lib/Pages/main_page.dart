@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/Pages/pagina1.dart';
+import 'package:trilhaapp/Pages/pagina2.dart';
+import 'package:trilhaapp/Pages/pagina3.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -24,7 +27,7 @@ class _MainPageState extends State<MainPage> {
                     padding: const EdgeInsets.symmetric(vertical: 5),
                     width: double.infinity,
                     child: const Text("Dados Cadastrais"),
-                    ),
+                  ),
                   onTap: () {},
                 ),
                 const Divider(),
@@ -36,18 +39,19 @@ class _MainPageState extends State<MainPage> {
                     padding: const EdgeInsets.symmetric(vertical: 5),
                     width: double.infinity,
                     child: const Text("Termos de uso e privacidade"),
-                    ),
+                  ),
                   onTap: () {},
                 ),
                 const Divider(),
                 const SizedBox(
                   height: 10,
-                ),InkWell(
+                ),
+                InkWell(
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 5),
                     width: double.infinity,
                     child: const Text("Dados Cadastrais"),
-                    ),
+                  ),
                   onTap: () {},
                 ),
                 const Divider(),
@@ -57,6 +61,15 @@ class _MainPageState extends State<MainPage> {
               ],
             ),
           ),
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: PageView(
+                children: const [Pagina1(), Pagina2(), Pagina3()],
+              ),
+            ),
+          ],
         ),
       ),
     );
